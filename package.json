@@ -1,8 +1,16 @@
 {
-  "name": "skycons",
+  "name": "skycons-ts",
   "version": "1.0.0",
-  "main": "skycons.js",
-  "repository": "git@github.com:darkskyapp/skycons.git",
-  "author": "The Dark Sky Company, LLC <http://darksky.net/>",
-  "license": "CC0"
+  "description": "",
+  "repository": "git@github.com:andipaetzold/skycons.git",
+  "author": "Andreas Pätzold",
+  "license": "CC0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "3.0.3"
+  }
 }
