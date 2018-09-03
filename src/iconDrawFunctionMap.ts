@@ -11,18 +11,20 @@ import { iconSnow } from "./drawing/icons/snow";
 import { iconWind } from "./drawing/icons/wind";
 
 const iconDrawFunctionMap: Map<string, DrawFunction> = new Map([
-    ["clear-day", iconClearDay],
-    ["clear-night", iconClearNight],
-    ["cloudy", iconCloudy],
-    ["fog", iconFog],
-    ["partly-cloudy-day", iconPartlyCloudyDay],
-    ["partly-cloudy-night", iconPartlyCloudyNight],
-    ["rain", iconRain],
-    ["sleet", iconSleet],
-    ["snow", iconSnow],
-    ["wind", iconWind],
+  ["clear-day", iconClearDay],
+  ["clear-night", iconClearNight],
+  ["cloudy", iconCloudy],
+  ["fog", iconFog],
+  ["partly-cloudy-day", iconPartlyCloudyDay],
+  ["partly-cloudy-night", iconPartlyCloudyNight],
+  ["rain", iconRain],
+  ["sleet", iconSleet],
+  ["snow", iconSnow],
+  ["wind", iconWind]
 ]);
 
-export function getIconDrawingFunctionByName(name: string): DrawFunction | null {
-    return iconDrawFunctionMap.get(name.toLowerCase()) || null;
+export function getIconDrawingFunctionByName(
+  name: string
+): DrawFunction | null {
+  return iconDrawFunctionMap.get(name.toLowerCase()) || null;
 }
