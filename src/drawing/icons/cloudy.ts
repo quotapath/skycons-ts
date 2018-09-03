@@ -6,9 +6,9 @@ export function iconCloudy(
   time: number,
   color: string
 ): void {
-  const w = ctx.canvas.width;
-  const h = ctx.canvas.height;
-  const s = Math.min(w, h);
+  const width = ctx.canvas.width;
+  const height = ctx.canvas.height;
+  const shorter = Math.min(width, height);
 
-  cloud(ctx, time, w * 0.5, h * 0.5, s, s * STROKE, color);
+  cloud(ctx, time, width * 0.5, height * 0.5, shorter, shorter * STROKE, color);
 }

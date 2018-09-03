@@ -7,28 +7,29 @@ export function iconFog(
   time: number,
   color: string
 ): void {
-  const w = ctx.canvas.width;
-  const h = ctx.canvas.height;
-  const s = Math.min(w, h);
-  const k = s * STROKE;
+  const width = ctx.canvas.width;
+  const height = ctx.canvas.height;
+  const shorter = Math.min(width, height);
+  const strokeWidth = shorter * STROKE;
 
-  fogbank(ctx, time, w * 0.5, h * 0.32, s * 0.75, k, color);
+  fogbank(ctx, time, width * 0.5, height * 0.32, shorter * 0.75, strokeWidth, color);
 
   time /= 5000;
 
-  const a = Math.cos(time * TAU) * s * 0.02;
-  const b = Math.cos((time + 0.25) * TAU) * s * 0.02;
-  const c = Math.cos((time + 0.5) * TAU) * s * 0.02;
-  const d = Math.cos((time + 0.75) * TAU) * s * 0.02;
-  const n = h * 0.936;
-  const e = Math.floor(n - k * 0.5) + 0.5;
-  const f = Math.floor(n - k * 2.5) + 0.5;
-
   ctx.strokeStyle = color;
-  ctx.lineWidth = k;
+  ctx.lineWidth = strokeWidth;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
 
-  line(ctx, a + w * 0.2 + k * 0.5, e, b + w * 0.8 - k * 0.5, e);
-  line(ctx, c + w * 0.2 + k * 0.5, f, d + w * 0.8 - k * 0.5, f);
+  const gapBottom = height * 0.936;
+
+  const top1 = Math.floor(gapBottom - strokeWidth * 2.5) + 0.5;
+  const gapLeft1 = Math.cos((time + 0.5) * TAU) * shorter * 0.02;
+  const gapRight1 = Math.cos((time + 0.75) * TAU) * shorter * 0.02;
+  line(ctx, gapLeft1 + width * 0.2 + strokeWidth * 0.5, top1, gapRight1 + width * 0.8 - strokeWidth * 0.5, top1);
+
+  const top2 = Math.floor(gapBottom - strokeWidth * 0.5) + 0.5;
+  const gapLeft2 = Math.cos(time * TAU) * shorter * 0.02;
+  const gapRight2 = Math.cos((time + 0.25) * TAU) * shorter * 0.02;
+  line(ctx, gapLeft2 + width * 0.2 + strokeWidth * 0.5, top2, gapRight2 + width * 0.8 - strokeWidth * 0.5, top2);
 }

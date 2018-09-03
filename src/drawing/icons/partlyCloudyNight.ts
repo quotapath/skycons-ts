@@ -7,10 +7,10 @@ export function iconPartlyCloudyNight(
   time: number,
   color: string
 ): void {
-  const w = ctx.canvas.width;
-  const h = ctx.canvas.height;
-  const s = Math.min(w, h);
+  const width = ctx.canvas.width;
+  const height = ctx.canvas.height;
+  const shorter = Math.min(width, height);
 
-  moon(ctx, time, w * 0.667, h * 0.375, s * 0.75, s * STROKE, color);
-  cloud(ctx, time, w * 0.375, h * 0.625, s * 0.75, s * STROKE, color);
+  moon(ctx, time, width * 0.667, height * 0.375, shorter * 0.75, shorter * STROKE, color);
+  cloud(ctx, time, width * 0.375, height * 0.625, shorter * 0.75, shorter * STROKE, color);
 }
