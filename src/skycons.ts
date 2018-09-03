@@ -96,10 +96,13 @@ export class Skycons {
   public play() {
     this.pause();
 
-    this.interval = requestAnimationFrame(() => {
+    const loop = () => {
       const now = Date.now();
       this.list.forEach(o => this.draw(o, now));
-    });
+      this.interval = requestAnimationFrame(loop);
+    };
+
+    this.interval = requestAnimationFrame(loop);
   }
 
   public pause() {
