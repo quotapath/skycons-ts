@@ -2,7 +2,10 @@
   "name": "skycons-ts",
   "version": "1.0.0",
   "description": "",
-  "repository": "git@github.com:andipaetzold/skycons.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andipaetzold/skycons.git"
+  },
   "author": "Andreas Pätzold",
   "license": "CC0",
   "main": "dist/index.js",
