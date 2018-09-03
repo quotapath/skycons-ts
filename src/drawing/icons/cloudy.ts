@@ -1,10 +1,10 @@
-import { cloud } from "../elements/cloud";
 import { STROKE } from "../../constants";
+import { cloud } from "../elements/cloud";
 
 export function iconCloudy(ctx: CanvasRenderingContext2D, time: number, color: string): void {
-    let w = ctx.canvas.width,
-        h = ctx.canvas.height,
-        s = Math.min(w, h);
+    const w = ctx.canvas.width;
+    const h = ctx.canvas.height;
+    const s = Math.min(w, h);
 
     cloud(ctx, time, w * 0.5, h * 0.5, s, s * STROKE, color);
-};
+}

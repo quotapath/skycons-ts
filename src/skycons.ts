@@ -1,6 +1,6 @@
-import { IDrawFunction } from "./IDrawFunction";
-import { getIconDrawingFunctionByName } from "./iconDrawFunctionMap";
 import { KEYFRAME } from "./constants";
+import { DrawFunction } from "./DrawFunction";
+import { getIconDrawingFunctionByName } from "./iconDrawFunctionMap";
 
 export interface IConstructorOptions {
     color: string;
@@ -8,12 +8,13 @@ export interface IConstructorOptions {
 }
 
 export interface IIconElement {
-    element: HTMLCanvasElement,
-    context: CanvasRenderingContext2D,
-    drawing: IDrawFunction,
+    element: HTMLCanvasElement;
+    context: CanvasRenderingContext2D;
+    drawing: DrawFunction;
 }
 
 export class Skycons {
+
     private interval: number | null = null;
     private readonly list: IIconElement[] = [];
 
@@ -21,30 +22,14 @@ export class Skycons {
 
     public constructor(opts: IConstructorOptions) {
         this.opts = {
-            color: 'black',
+            color: "black",
             resizeClear: false,
             ...opts,
-        }
+        };
     }
 
-    private determineDrawingFunction(draw: string | IDrawFunction): IDrawFunction | null {
-        if (typeof draw === "string") {
-            return getIconDrawingFunctionByName(draw);
-        } else {
-            return draw;
-        }
-    };
-
-    private getCanvas(elementOrId: string | HTMLCanvasElement): HTMLCanvasElement {
-        if (typeof elementOrId === "string") {
-            return <HTMLCanvasElement>document.getElementById(elementOrId);
-        } else {
-            return elementOrId;
-        }
-    }
-
-    public add(elementOrId: string | HTMLCanvasElement, draw: string | IDrawFunction) {
-        let canvas = this.getCanvas(elementOrId);
+    public add(elementOrId: string | HTMLCanvasElement, draw: string | DrawFunction) {
+        const canvas = this.getCanvas(elementOrId);
         if (!canvas) {
             return;
         }
@@ -54,25 +39,25 @@ export class Skycons {
             return;
         }
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
         if (!ctx) {
             return;
         }
 
         const obj: IIconElement = {
-            element: canvas,
             context: ctx,
-            drawing: drawFn
+            drawing: drawFn,
+            element: canvas,
         };
 
         this.list.push(obj);
         this.draw(obj, KEYFRAME);
     }
 
-    public set(elementOrId: string | HTMLCanvasElement, draw: IDrawFunction) {
-        const canvas = this.getCanvas(elementOrId)
+    public set(elementOrId: string | HTMLCanvasElement, draw: DrawFunction) {
+        const canvas = this.getCanvas(elementOrId);
 
-        const obj = this.list.find(o => o.element === canvas);
+        const obj = this.list.find((o) => o.element === canvas);
         if (obj) {
             const drawFn = this.determineDrawingFunction(draw);
             if (!drawFn) {
@@ -87,15 +72,15 @@ export class Skycons {
     }
 
     public remove(elementOrId: string | HTMLCanvasElement) {
-        let canvas = this.getCanvas(elementOrId);
-        const i = this.list.findIndex(o => o.element === canvas);
+        const canvas = this.getCanvas(elementOrId);
+        const i = this.list.findIndex((o) => o.element === canvas);
         if (i >= 0) {
             this.list.splice(i, 1);
         }
     }
 
     public draw(obj: IIconElement, time: number) {
-        let canvas = obj.context.canvas;
+        const canvas = obj.context.canvas;
 
         if (this.opts.resizeClear) {
             canvas.width = canvas.width;
@@ -111,7 +96,7 @@ export class Skycons {
 
         this.interval = requestAnimationFrame(() => {
             const now = Date.now();
-            this.list.forEach(o => this.draw(o, now));
+            this.list.forEach((o) => this.draw(o, now));
         });
     }
 
@@ -119,6 +104,21 @@ export class Skycons {
         if (this.interval) {
             cancelAnimationFrame(this.interval);
             this.interval = null;
+        }
+    }
+
+    private determineDrawingFunction(draw: string | DrawFunction): DrawFunction | null {
+        if (typeof draw === "string") {
+            return getIconDrawingFunctionByName(draw);
+        } else {
+            return draw;
+        }
+    }
+    private getCanvas(elementOrId: string | HTMLCanvasElement): HTMLCanvasElement {
+        if (typeof elementOrId === "string") {
+            return document.getElementById(elementOrId) as HTMLCanvasElement;
+        } else {
+            return elementOrId;
         }
     }
 }

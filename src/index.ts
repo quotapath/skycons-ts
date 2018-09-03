@@ -1,1 +1,1 @@
-export { Skycons } from './skycons';
+export { Skycons } from "./skycons";

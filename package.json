@@ -8,9 +8,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
+    "tslint": "5.11.0",
     "typescript": "3.0.3"
   }
 }

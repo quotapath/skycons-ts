@@ -1,14 +1,34 @@
-import { line } from "./line";
 import { TAU } from "../../constants";
+import { line } from "./line";
 
-export function snow(ctx: CanvasRenderingContext2D, time: number, cx: number, cy: number, cw: number, s: number, color: string): void {
+export function snow(
+    ctx: CanvasRenderingContext2D, time: number,
+    cx: number, cy: number, cw: number, s: number,
+    color: string,
+): void {
     time /= 3000;
-    let a = cw * 0.16, b = s * 0.75, u = time * TAU * 0.7, ux = Math.cos(u) * b, uy = Math.sin(u) * b, v = u + TAU / 3, vx = Math.cos(v) * b, vy = Math.sin(v) * b, w = u + TAU * 2 / 3, wx = Math.cos(w) * b, wy = Math.sin(w) * b, i, p, x, y;
+
+    const a = cw * 0.16;
+    const b = s * 0.75;
+    const u = time * TAU * 0.7;
+    const ux = Math.cos(u) * b;
+    const uy = Math.sin(u) * b;
+    const v = u + TAU / 3;
+    const vx = Math.cos(v) * b;
+    const vy = Math.sin(v) * b;
+    const w = u + TAU * 2 / 3;
+    const wx = Math.cos(w) * b;
+    const wy = Math.sin(w) * b;
+
+    let p;
+    let x;
+    let y;
+
     ctx.strokeStyle = color;
     ctx.lineWidth = s * 0.5;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    for (i = 4; i--;) {
+    for (let i = 0; i < 4; ++i) {
         p = (time + i / 4) % 1;
         x = cx + Math.sin((p + i / 4) * TAU) * a;
         y = cy + p * cw;

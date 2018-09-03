@@ -1,9 +1,21 @@
 import { TAU } from "../../constants";
 
-export function rain(ctx: CanvasRenderingContext2D, time: number, cx: number, cy: number, cw: number, s: number, color: string) {
+export function rain(
+    ctx: CanvasRenderingContext2D, time: number,
+    cx: number, cy: number, cw: number, s: number,
+    color: string,
+): void {
     time /= 1350;
-    const a = cw * 0.16, b = TAU * 11 / 12, c = TAU * 7 / 12;
-    let i, p, x, y;
+
+    const a = cw * 0.16;
+    const b = TAU * 11 / 12;
+    const c = TAU * 7 / 12;
+
+    let i;
+    let p;
+    let x;
+    let y;
+
     ctx.fillStyle = color;
     for (i = 4; i--;) {
         p = (time + i / 4) % 1;

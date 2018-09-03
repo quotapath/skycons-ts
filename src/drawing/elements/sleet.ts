@@ -1,8 +1,18 @@
 import { line } from "./line";
 
-export function sleet(ctx: CanvasRenderingContext2D, time: number, cx: number, cy: number, cw: number, s: number, color: string): void {
+export function sleet(
+    ctx: CanvasRenderingContext2D, time: number,
+    cx: number, cy: number, cw: number, s: number,
+    color: string,
+): void {
     time /= 750;
-    let a = cw * 0.1875, i, p, x, y;
+    const a = cw * 0.1875;
+
+    let i;
+    let p;
+    let x;
+    let y;
+
     ctx.strokeStyle = color;
     ctx.lineWidth = s * 0.5;
     ctx.lineCap = "round";

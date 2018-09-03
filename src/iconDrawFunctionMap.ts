@@ -1,4 +1,4 @@
-import { IDrawFunction } from "./IDrawFunction";
+import { DrawFunction } from "./DrawFunction";
 import { iconClearDay } from "./drawing/icons/clearDay";
 import { iconClearNight } from "./drawing/icons/clearNight";
 import { iconCloudy } from "./drawing/icons/cloudy";
@@ -10,19 +10,19 @@ import { iconSleet } from "./drawing/icons/sleet";
 import { iconSnow } from "./drawing/icons/snow";
 import { iconWind } from "./drawing/icons/wind";
 
-const iconDrawFunctionMap: Map<string, IDrawFunction> = new Map([
-    ['clear-day', iconClearDay],
-    ['clear-night', iconClearNight],
-    ['cloudy', iconCloudy],
-    ['fog', iconFog],
-    ['partly-cloudy-day', iconPartlyCloudyDay],
-    ['partly-cloudy-night', iconPartlyCloudyNight],
-    ['rain', iconRain],
-    ['sleet', iconSleet],
-    ['snow', iconSnow],
-    ['wind', iconWind],
+const iconDrawFunctionMap: Map<string, DrawFunction> = new Map([
+    ["clear-day", iconClearDay],
+    ["clear-night", iconClearNight],
+    ["cloudy", iconCloudy],
+    ["fog", iconFog],
+    ["partly-cloudy-day", iconPartlyCloudyDay],
+    ["partly-cloudy-night", iconPartlyCloudyNight],
+    ["rain", iconRain],
+    ["sleet", iconSleet],
+    ["snow", iconSnow],
+    ["wind", iconWind],
 ]);
 
-export function getIconDrawingFunctionByName(name: string): IDrawFunction | null {
+export function getIconDrawingFunctionByName(name: string): DrawFunction | null {
     return iconDrawFunctionMap.get(name.toLowerCase()) || null;
 }
