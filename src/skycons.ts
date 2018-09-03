@@ -19,7 +19,7 @@ export class Skycons {
 
   private readonly opts: IConstructorOptions;
 
-  public constructor(opts: IConstructorOptions) {
+  public constructor(opts?: IConstructorOptions) {
     this.opts = {
       color: "black",
       resizeClear: false,
