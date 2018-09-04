@@ -90,7 +90,12 @@ export class Skycons {
       obj.context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    obj.drawing(obj.context, time, this.opts.color);
+    obj.context.lineCap = "round";
+    obj.context.lineJoin = "round";
+    obj.context.strokeStyle = this.opts.color;
+    obj.context.fillStyle = this.opts.color;
+
+    obj.drawing(obj.context, time);
   }
 
   public play() {

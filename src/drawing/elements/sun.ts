@@ -4,34 +4,35 @@ import { line } from "./line";
 export function sun(
   ctx: CanvasRenderingContext2D,
   time: number,
-  cx: number,
-  cy: number,
-  cw: number,
-  s: number,
-  color: string
+  circleX: number,
+  circleY: number,
+  circleWidth: number,
+  stroke: number
 ): void {
   time /= 120000;
 
-  const a = cw * 0.25 - s * 0.5;
-  const b = cw * 0.32 + s * 0.5;
-  const c = cw * 0.5 - s * 0.5;
+  ctx.lineWidth = stroke;
 
-  let p;
-  let cos;
-  let sin;
+  const radius = circleWidth * 0.25 - stroke * 0.5;
 
-  ctx.strokeStyle = color;
-  ctx.lineWidth = s;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
   ctx.beginPath();
-  ctx.arc(cx, cy, a, 0, TAU, false);
+  ctx.arc(circleX, circleY, radius, 0, TAU, false);
   ctx.stroke();
 
+  const innerRadius = circleWidth * 0.32 + stroke * 0.5;
+  const outerRadius = circleWidth * 0.5 - stroke * 0.5;
+
   for (let i = 0; i < 8; ++i) {
-    p = (time + i / 8) * TAU;
-    cos = Math.cos(p);
-    sin = Math.sin(p);
-    line(ctx, cx + cos * b, cy + sin * b, cx + cos * c, cy + sin * c);
+    const p = (time + i / 8) * TAU;
+    const cos = Math.cos(p);
+    const sin = Math.sin(p);
+
+    line(
+      ctx,
+      circleX + cos * innerRadius,
+      circleY + sin * innerRadius,
+      circleX + cos * outerRadius,
+      circleY + sin * outerRadius
+    );
   }
 }
