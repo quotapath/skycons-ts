@@ -2,14 +2,14 @@ import { puffs } from "./puffs";
 
 export function cloud(
   ctx: CanvasRenderingContext2D,
-  t: number,
+  time: number,
   cx: number,
   cy: number,
   cw: number,
-  s: number,
+  stroke: number,
   color: string
 ): void {
-  t /= 30000;
+  time /= 30000;
 
   const a = cw * 0.21;
   const b = cw * 0.12;
@@ -17,8 +17,8 @@ export function cloud(
   const d = cw * 0.28;
 
   ctx.fillStyle = color;
-  puffs(ctx, t, cx, cy, a, b, c, d);
+  puffs(ctx, time, cx, cy, a, b, c, d);
   ctx.globalCompositeOperation = "destination-out";
-  puffs(ctx, t, cx, cy, a, b, c - s, d - s);
+  puffs(ctx, time, cx, cy, a, b, c - stroke, d - stroke);
   ctx.globalCompositeOperation = "source-over";
 }

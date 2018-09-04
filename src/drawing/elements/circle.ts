@@ -4,9 +4,9 @@ export function circle(
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  r: number
+  radius: number
 ) {
   ctx.beginPath();
-  ctx.arc(x, y, r, 0, TAU, false);
+  ctx.arc(x, y, radius, 0, TAU, false);
   ctx.fill();
 }

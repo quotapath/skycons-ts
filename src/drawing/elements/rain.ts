@@ -6,7 +6,7 @@ export function rain(
   cx: number,
   cy: number,
   cw: number,
-  s: number,
+  stroke: number,
   color: string
 ): void {
   time /= 1350;
@@ -21,13 +21,13 @@ export function rain(
   let y;
 
   ctx.fillStyle = color;
-  for (i = 4; i--; ) {
+  for (i = 4; i--;) {
     p = (time + i / 4) % 1;
     x = cx + ((i - 1.5) / 1.5) * (i === 1 || i === 2 ? -1 : 1) * a;
     y = cy + p * p * cw;
     ctx.beginPath();
-    ctx.moveTo(x, y - s * 1.5);
-    ctx.arc(x, y, s * 0.75, b, c, false);
+    ctx.moveTo(x, y - stroke * 1.5);
+    ctx.arc(x, y, stroke * 0.75, b, c, false);
     ctx.fill();
   }
 }

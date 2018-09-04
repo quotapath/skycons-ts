@@ -2,23 +2,25 @@ import { TAU, TWO_OVER_SQRT_2 } from "../../constants";
 
 export function moon(
   ctx: CanvasRenderingContext2D,
-  t: number,
+  time: number,
   cx: number,
   cy: number,
   cw: number,
-  s: number,
+  stroke: number,
   color: string
 ): void {
-  t /= 15000;
-  const a = cw * 0.29 - s * 0.5;
+  time /= 15000;
+
+  const a = cw * 0.29 - stroke * 0.5;
   const b = cw * 0.05;
-  const c = Math.cos(t * TAU);
+  const c = Math.cos(time * TAU);
   const p = (c * TAU) / -16;
 
   ctx.strokeStyle = color;
-  ctx.lineWidth = s;
+  ctx.lineWidth = stroke;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
+
   cx += c * b;
   ctx.beginPath();
   ctx.arc(cx, cy, a, p + TAU / 8, p + (TAU * 7) / 8, false);

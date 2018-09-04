@@ -4,40 +4,41 @@ import { line } from "./line";
 export function snow(
   ctx: CanvasRenderingContext2D,
   time: number,
-  cx: number,
-  cy: number,
-  cw: number,
-  s: number,
+  gapLeft: number,
+  gapTop: number,
+  maxGapBetween: number,
+  stroke: number,
   color: string
 ): void {
   time /= 3000;
 
-  const a = cw * 0.16;
-  const b = s * 0.75;
-  const u = time * TAU * 0.7;
-  const ux = Math.cos(u) * b;
-  const uy = Math.sin(u) * b;
-  const v = u + TAU / 3;
-  const vx = Math.cos(v) * b;
-  const vy = Math.sin(v) * b;
-  const w = u + (TAU * 2) / 3;
-  const wx = Math.cos(w) * b;
-  const wy = Math.sin(w) * b;
+  const a = maxGapBetween * 0.16;
+  const lineLength = stroke * 0.75;
 
-  let p;
-  let x;
-  let y;
+  const angle1 = time * TAU * 0.7;
+  const line1X = Math.cos(angle1) * lineLength;
+  const line1Y = Math.sin(angle1) * lineLength;
+
+  const angle2 = angle1 + TAU / 3;
+  const line2X = Math.cos(angle2) * lineLength;
+  const line2Y = Math.sin(angle2) * lineLength;
+
+  const angle3 = angle1 + (TAU * 2) / 3;
+  const line3X = Math.cos(angle3) * lineLength;
+  const line3Y = Math.sin(angle3) * lineLength;
 
   ctx.strokeStyle = color;
-  ctx.lineWidth = s * 0.5;
+  ctx.lineWidth = stroke * 0.5;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
+
   for (let i = 0; i < 4; ++i) {
-    p = (time + i / 4) % 1;
-    x = cx + Math.sin((p + i / 4) * TAU) * a;
-    y = cy + p * cw;
-    line(ctx, x - ux, y - uy, x + ux, y + uy);
-    line(ctx, x - vx, y - vy, x + vx, y + vy);
-    line(ctx, x - wx, y - wy, x + wx, y + wy);
+    const percentage = (time + i / 4) % 1;
+    const x = gapLeft + Math.sin((percentage + i / 4) * TAU) * a;
+    const y = gapTop + percentage * maxGapBetween;
+
+    line(ctx, x - line1X, y - line1Y, x + line1X, y + line1Y);
+    line(ctx, x - line2X, y - line2Y, x + line2X, y + line2Y);
+    line(ctx, x - line3X, y - line3Y, x + line3X, y + line3Y);
   }
 }

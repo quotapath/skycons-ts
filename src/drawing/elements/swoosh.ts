@@ -7,7 +7,7 @@ export function swoosh(
   cx: number,
   cy: number,
   cw: number,
-  s: number,
+  stroke: number,
   index: number,
   total: number,
   color: string
@@ -25,9 +25,10 @@ export function swoosh(
   let i;
 
   ctx.strokeStyle = color;
-  ctx.lineWidth = s;
+  ctx.lineWidth = stroke;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
+
   if (a < 1) {
     ctx.beginPath();
     a *= path.length / 2 - 1;
@@ -76,6 +77,7 @@ export function swoosh(
     );
     ctx.stroke();
   }
+
   if (e < 1) {
     e *= path.length / 2 - 1;
     f = Math.floor(e);
@@ -88,7 +90,7 @@ export function swoosh(
       cx + (path[f - 2] * (1 - e) + path[f] * e) * cw,
       cy + (path[f - 1] * (1 - e) + path[f + 1] * e) * cw,
       cw,
-      s,
+      stroke,
       color
     );
   }

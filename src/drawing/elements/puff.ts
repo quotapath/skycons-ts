@@ -8,16 +8,16 @@ export function puff(
   cy: number,
   rx: number,
   ry: number,
-  rmin: number,
-  rmax: number
+  radiusMin: number,
+  radiusMax: number
 ): void {
   const c = Math.cos(time * TAU);
   const s = Math.sin(time * TAU);
-  rmax -= rmin;
+  radiusMax -= radiusMin;
   circle(
     ctx,
     cx - s * rx,
-    cy + c * ry + rmax * 0.5,
-    rmin + (1 - c * 0.5) * rmax
+    cy + c * ry + radiusMax * 0.5,
+    radiusMin + (1 - c * 0.5) * radiusMax
   );
 }

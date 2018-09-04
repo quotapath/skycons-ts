@@ -7,10 +7,10 @@ export function puffs(
   cy: number,
   rx: number,
   ry: number,
-  rmin: number,
-  rmax: number
+  radiusMin: number,
+  radiusMax: number
 ): void {
   for (let i = 0; i < 5; ++i) {
-    puff(ctx, time + i / 5, cx, cy, rx, ry, rmin, rmax);
+    puff(ctx, time + i / 5, cx, cy, rx, ry, radiusMin, radiusMax);
   }
 }

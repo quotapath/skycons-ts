@@ -6,7 +6,7 @@ export function leaf(
   x: number,
   y: number,
   cw: number,
-  s: number,
+  stroke: number,
   color: string
 ): void {
   const a = cw / 8;
@@ -18,7 +18,7 @@ export function leaf(
 
   ctx.fillStyle = color;
   ctx.strokeStyle = color;
-  ctx.lineWidth = s;
+  ctx.lineWidth = stroke;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.beginPath();

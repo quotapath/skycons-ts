@@ -3,30 +3,29 @@ import { line } from "./line";
 export function sleet(
   ctx: CanvasRenderingContext2D,
   time: number,
-  cx: number,
-  cy: number,
-  cw: number,
-  s: number,
+  gapleft: number,
+  gapTop: number,
+  circleWidth: number,
+  stroke: number,
   color: string
 ): void {
   time /= 750;
-  const a = cw * 0.1875;
-
-  let i;
-  let p;
-  let x;
-  let y;
 
   ctx.strokeStyle = color;
-  ctx.lineWidth = s * 0.5;
+  ctx.lineWidth = stroke * 0.5;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
-  for (i = 4; i--; ) {
-    p = (time + i / 4) % 1;
-    x =
-      Math.floor(cx + ((i - 1.5) / 1.5) * (i === 1 || i === 2 ? -1 : 1) * a) +
+
+  const gapBetween = circleWidth * 0.1875;
+
+  for (let i = 0; i < 4; ++i) {
+    const percentage = (time + i / 4) % 1;
+
+    const x =
+      Math.floor(gapleft + ((i - 1.5) / 1.5) * (i === 1 || i === 2 ? -1 : 1) * gapBetween) +
       0.5;
-    y = cy + p * cw;
-    line(ctx, x, y - s * 1.5, x, y + s * 1.5);
+    const y = gapTop + percentage * circleWidth;
+
+    line(ctx, x, y - stroke * 1.5, x, y + stroke * 1.5);
   }
 }

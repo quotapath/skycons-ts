@@ -1,12 +1,12 @@
 export function line(
   ctx: CanvasRenderingContext2D,
-  ax: number,
-  ay: number,
-  bx: number,
-  by: number
+  fromX: number,
+  fromY: number,
+  toX: number,
+  toY: number
 ): void {
   ctx.beginPath();
-  ctx.moveTo(ax, ay);
-  ctx.lineTo(bx, by);
+  ctx.moveTo(fromX, fromY);
+  ctx.lineTo(toX, toY);
   ctx.stroke();
 }
