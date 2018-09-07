@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/andipaetzold/skycons/tree/master.svg?style=svg)](https://circleci.com/gh/andipaetzold/skycons/tree/master)
+
 Skycons
 =======
 
