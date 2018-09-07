@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/andipaetzold/skycons/tree/master.svg?style=svg)](https://circleci.com/gh/andipaetzold/skycons/tree/master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f6399fba6533a100291b/maintainability)](https://codeclimate.com/github/andipaetzold/skycons/maintainability)
 
 Skycons
 =======
