@@ -1,11 +1,13 @@
 version: 2
+
+defaults: &defaults
+  working_directory: ~/skycons
+  docker:
+    - image: circleci/node:10
+
 jobs:
   build:
-    docker:
-      - image: circleci/node:10
-
-    working_directory: ~/skycons
-
+    <<: *defaults  
     steps:
       - checkout
       - restore_cache:
@@ -22,3 +24,33 @@ jobs:
 
       - run: npm run lint
       - run: npm run build
+
+      - persist_to_workspace:
+          root: ~/skycons
+          paths: .
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/skycons
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/skycons/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
