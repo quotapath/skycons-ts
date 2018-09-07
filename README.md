@@ -7,6 +7,11 @@ This project is a fork of [Skycons by DarkSky](https://github.com/darkskyapp/sky
 
 All images and animations are unchanged and were designed by DarkSky.
 
+## Install
+```bash
+npm install skycons-ts --save
+```
+
 ## Usage
 
 ```html
