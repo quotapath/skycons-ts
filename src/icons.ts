@@ -22,6 +22,19 @@ export type IconKey =
   | "snow"
   | "wind";
 
+export enum ICON {
+  CLEAR_DAY = "clear-day",
+  CLEAR_NIGHT = "clear-night",
+  CLOUDY = "cloudy",
+  FOG = "fog",
+  PARTLY_CLOUDY_DAY = "partly-cloudy-day",
+  PARTLY_CLOUDY_NIGHT = "partly-cloudy-night",
+  RAIN = "rain",
+  SLEET = "sleet",
+  SNOW = "snow",
+  WIND = "wind"
+}
+
 const iconDrawFunctionMap = new Map<IconKey, DrawFunction>([
   ["clear-day", iconClearDay],
   ["clear-night", iconClearNight],

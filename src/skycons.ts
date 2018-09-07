@@ -1,6 +1,6 @@
 import { KEYFRAME } from "./constants";
 import { DrawFunction } from "./DrawFunction";
-import { getIconDrawingFunctionByName, IconKey } from "./iconDrawFunctionMap";
+import { getIconDrawingFunctionByName, IconKey } from "./icons";
 
 export interface IConstructorOptions {
   color: string;
