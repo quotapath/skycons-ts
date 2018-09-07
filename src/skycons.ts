@@ -1,6 +1,6 @@
 import { KEYFRAME } from "./constants";
 import { DrawFunction } from "./DrawFunction";
-import { getIconDrawingFunctionByName } from "./iconDrawFunctionMap";
+import { getIconDrawingFunctionByName, IconKey } from "./iconDrawFunctionMap";
 
 export interface IConstructorOptions {
   color: string;
@@ -27,17 +27,9 @@ export class Skycons {
     };
   }
 
-  public add(
-    elementOrId: string | HTMLCanvasElement,
-    draw: string | DrawFunction
-  ) {
+  public add(elementOrId: string | HTMLCanvasElement, draw: IconKey) {
     const canvas = this.getCanvas(elementOrId);
     if (!canvas) {
-      return;
-    }
-
-    const drawFn = this.determineDrawingFunction(draw);
-    if (!drawFn) {
       return;
     }
 
@@ -48,7 +40,7 @@ export class Skycons {
 
     const obj: IIconElement = {
       context: ctx,
-      drawing: drawFn,
+      drawing: getIconDrawingFunctionByName(draw),
       element: canvas
     };
 
@@ -56,17 +48,12 @@ export class Skycons {
     this.draw(obj, KEYFRAME);
   }
 
-  public set(elementOrId: string | HTMLCanvasElement, draw: DrawFunction) {
+  public set(elementOrId: string | HTMLCanvasElement, draw: IconKey) {
     const canvas = this.getCanvas(elementOrId);
 
     const obj = this.list.find(o => o.element === canvas);
     if (obj) {
-      const drawFn = this.determineDrawingFunction(draw);
-      if (!drawFn) {
-        return;
-      }
-
-      obj.drawing = drawFn;
+      obj.drawing = getIconDrawingFunctionByName(draw);
       this.draw(obj, KEYFRAME);
     } else {
       this.add(canvas, draw);
@@ -117,15 +104,6 @@ export class Skycons {
     }
   }
 
-  private determineDrawingFunction(
-    draw: string | DrawFunction
-  ): DrawFunction | null {
-    if (typeof draw === "string") {
-      return getIconDrawingFunctionByName(draw);
-    } else {
-      return draw;
-    }
-  }
   private getCanvas(
     elementOrId: string | HTMLCanvasElement
   ): HTMLCanvasElement {
