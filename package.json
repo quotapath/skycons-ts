@@ -1,13 +1,13 @@
 {
   "name": "skycons-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Improved Skycons by Darksky with typings for TypeScript.",
   "repository": {
     "type": "git",
     "url": "git@github.com:andipaetzold/skycons.git"
   },
   "author": "Andreas Pätzold",
-  "license": "CC0",
+  "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
