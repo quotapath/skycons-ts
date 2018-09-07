@@ -1,6 +1,6 @@
 {
   "name": "skycons-ts",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Improved Skycons by Darksky with typings for TypeScript.",
   "repository": {
     "type": "git",
