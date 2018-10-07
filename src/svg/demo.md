@@ -1,0 +1,1 @@
+![Clear Day](clear-day.svg)
