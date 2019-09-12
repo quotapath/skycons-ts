@@ -3,24 +3,24 @@ import { iconClearDay } from "./drawing/icons/clearDay";
 import { iconClearNight } from "./drawing/icons/clearNight";
 import { iconCloudy } from "./drawing/icons/cloudy";
 import { iconFog } from "./drawing/icons/fog";
+import { iconHail } from "./drawing/icons/hail";
 import { iconPartlyCloudyDay } from "./drawing/icons/partlyCloudyDay";
 import { iconPartlyCloudyNight } from "./drawing/icons/partlyCloudyNight";
 import { iconRain } from "./drawing/icons/rain";
+import { iconRainSnow } from "./drawing/icons/rainSnow";
+import { iconRainSnowShowersDay } from "./drawing/icons/rainSnowShowersDay";
+import { iconRainSnowShowersNight } from "./drawing/icons/rainSnowShowersNight";
+import { iconShowersDay } from "./drawing/icons/showersDay";
+import { iconShowersNight } from "./drawing/icons/showersNight";
 import { iconSleet } from "./drawing/icons/sleet";
 import { iconSnow } from "./drawing/icons/snow";
-import { iconWind } from "./drawing/icons/wind";
-import { iconHail } from "./drawing/icons/hail";
-import { iconRainSnow } from "./drawing/icons/rainSnow";
-import { iconRainSnowShowersNight } from "./drawing/icons/rainSnowShowersNight";
-import { iconRainSnowShowersDay } from "./drawing/icons/rainSnowShowersDay";
-import { iconShowersNight } from "./drawing/icons/showersNight";
-import { iconShowersDay } from "./drawing/icons/showersDay";
 import { iconSnowShowersDay } from "./drawing/icons/snowShowersDay";
 import { iconSnowShowersNight } from "./drawing/icons/snowShowersNight";
 import { iconThunder } from "./drawing/icons/thunder";
 import { iconThunderRain } from "./drawing/icons/thunderRain";
 import { iconThunderShowersDay } from "./drawing/icons/thunderShowersDay";
 import { iconThunderShowersNight } from "./drawing/icons/thunderShowersNight";
+import { iconWind } from "./drawing/icons/wind";
 
 export type IconKey =
   | "clear-day"
@@ -85,7 +85,7 @@ export const iconDrawFunctionMap = new Map<IconKey, DrawFunction>([
   ["hail", iconHail],
   ["rain-snow", iconRainSnow],
   ["rain-snow-showers-day", iconRainSnowShowersDay],
-  ["rain-snow-showers-day", iconRainSnowShowersNight],
+  ["rain-snow-showers-night", iconRainSnowShowersNight],
   ["showers-day", iconShowersDay],
   ["showers-night", iconShowersNight],
   ["snow-showers-day", iconSnowShowersDay],
