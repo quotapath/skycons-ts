@@ -6,7 +6,8 @@ export function rain(
   cx: number,
   cy: number,
   cw: number,
-  stroke: number
+  stroke: number,
+  color: string
 ): void {
   time /= 1350;
 
@@ -18,6 +19,8 @@ export function rain(
   let p;
   let x;
   let y;
+
+  ctx.fillStyle = color;
 
   for (i = 4; i--; ) {
     p = (time + i / 4) % 1;

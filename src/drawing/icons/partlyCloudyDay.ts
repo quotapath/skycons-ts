@@ -1,3 +1,4 @@
+import { colors } from "../../colors";
 import { STROKE } from "../../constants";
 import { cloud } from "../elements/cloud";
 import { sun } from "../elements/sun";
@@ -16,7 +17,8 @@ export function iconPartlyCloudyDay(
     width * 0.625,
     height * 0.375,
     shorter * 0.75,
-    shorter * STROKE
+    shorter * STROKE,
+    colors.sun
   );
   cloud(
     ctx,
@@ -24,6 +26,7 @@ export function iconPartlyCloudyDay(
     width * 0.375,
     height * 0.625,
     shorter * 0.75,
-    shorter * STROKE
+    shorter * STROKE,
+    colors.cloud
   );
 }

@@ -1,3 +1,4 @@
+import { colors } from "../../colors";
 import { STROKE } from "../../constants";
 import { moon } from "../elements/moon";
 
@@ -9,5 +10,13 @@ export function iconClearNight(
   const height = ctx.canvas.height;
   const shorter = Math.min(width, height);
 
-  moon(ctx, time, width * 0.5, height * 0.5, shorter, shorter * STROKE);
+  moon(
+    ctx,
+    time,
+    width * 0.5,
+    height * 0.5,
+    shorter,
+    shorter * STROKE,
+    colors.moon
+  );
 }

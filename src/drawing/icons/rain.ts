@@ -1,3 +1,4 @@
+import { colors } from "../../colors";
 import { STROKE } from "../../constants";
 import { cloud } from "../elements/cloud";
 import { rain } from "../elements/rain";
@@ -7,6 +8,22 @@ export function iconRain(ctx: CanvasRenderingContext2D, time: number): void {
   const height = ctx.canvas.height;
   const shorter = Math.min(width, height);
 
-  rain(ctx, time, width * 0.5, height * 0.37, shorter * 0.9, shorter * STROKE);
-  cloud(ctx, time, width * 0.5, height * 0.37, shorter * 0.9, shorter * STROKE);
+  rain(
+    ctx,
+    time,
+    width * 0.5,
+    height * 0.37,
+    shorter * 0.9,
+    shorter * STROKE,
+    colors.rain
+  );
+  cloud(
+    ctx,
+    time,
+    width * 0.5,
+    height * 0.37,
+    shorter * 0.9,
+    shorter * STROKE,
+    colors.cloud
+  );
 }
