@@ -4,7 +4,7 @@
   "description": "Improved Skycons by Darksky with typings for TypeScript. also with colors.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:andipaetzold/skycons-ts.git"
+    "url": "git@github.com:quotapath/skycons-ts.git"
   },
   "author": "QuotaPath",
   "license": "MIT",
